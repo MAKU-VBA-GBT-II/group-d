@@ -16,7 +16,7 @@ VBA II (Veri Bilimi ve Analitik) dersi kapsamındaki **veri şirketi simülasyon
 
 Kendi satırınızı başlangıç rolünüzle ekleyin. Lider `PM`'dir; diğer üç üye PM'nin işe alımıyla başlangıç rollerine yerleştirilir. Roller Görev 1–3 boyunca dönem planı §1.3'e göre döner:
 
-- Ad Soyad — PM (lider)
+- Eylül ÜSTÜNKAYA — PM (lider)
 - Ad Soyad — BE (başlangıç rolü)
 - Ad Soyad — FE (başlangıç rolü)
 - Ad Soyad — DQ (başlangıç rolü, veri analisti ve kalite)
