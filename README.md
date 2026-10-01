@@ -1,4 +1,4 @@
-# <Şirket Adı> — Grup D
+# EMİN SİGORTA — Grup D
 
 VBA II (Veri Bilimi ve Analitik) dersi kapsamındaki **veri şirketi simülasyonu** çalışma deposu.
 
@@ -6,9 +6,9 @@ VBA II (Veri Bilimi ve Analitik) dersi kapsamındaki **veri şirketi simülasyon
 
 | Alan | Değer |
 |---|---|
-| Şirket adı | <Hafta 1'de seçilecek> |
+| Şirket adı | EMİN SİGORTA |
 | Sektör | Sigorta |
-| Teknoloji kararı | <dil + kütüphaneler, örn. "Python · pandas · matplotlib"> |
+| Teknoloji kararı |  Dil: Python · Kütüphaneler: pandas , numpy , matplotlib , seaborn , Faker · Görselleştirme: PNG |
 
 > Teknoloji serbesttir; karar Hafta 1'de şirketçe verilip buraya yazılır.
 
@@ -17,9 +17,9 @@ VBA II (Veri Bilimi ve Analitik) dersi kapsamındaki **veri şirketi simülasyon
 Kendi satırınızı başlangıç rolünüzle ekleyin. Lider `PM`'dir; diğer üç üye PM'nin işe alımıyla başlangıç rollerine yerleştirilir. Roller Görev 1–3 boyunca dönem planı §1.3'e göre döner:
 
 - Eylül ÜSTÜNKAYA — PM (lider)
-- Ad Soyad — BE (başlangıç rolü)
-- Ad Soyad — FE (başlangıç rolü)
-- Ad Soyad — DQ (başlangıç rolü, veri analisti ve kalite)
+- Mehmet Emin EMEK — BE (başlangıç rolü)
+- Gülbahar VAROL — FE (başlangıç rolü)
+- Ayşe AYDIN — DQ (başlangıç rolü, veri analisti ve kalite)
 
 ## Klasör Yapısı
 
