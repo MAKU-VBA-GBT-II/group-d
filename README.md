@@ -17,7 +17,7 @@ VBA II (Veri Bilimi ve Analitik) dersi kapsamındaki **veri şirketi simülasyon
 Kendi satırınızı başlangıç rolünüzle ekleyin. Lider `PM`'dir; diğer üç üye PM'nin işe alımıyla başlangıç rollerine yerleştirilir. Roller Görev 1–3 boyunca dönem planı §1.3'e göre döner:
 
 - Eylül ÜSTÜNKAYA — PM (lider)
-- Mehmet Emin EMEK — BE (başlangıç rolü)
+- Mehmet Emin EMEK — BE (başlangıç rolü) emin-emek
 - Gülbahar VAROL — FE (başlangıç rolü)  @gulbaharvarol03-lang
 - Ayşe AYDIN — DQ (başlangıç rolü, veri analisti ve kalite)
 
