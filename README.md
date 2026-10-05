@@ -19,7 +19,7 @@ Kendi satırınızı başlangıç rolünüzle ekleyin. Lider `PM`'dir; diğer ü
 - Eylül ÜSTÜNKAYA — PM (lider)
 - Mehmet Emin EMEK — BE (başlangıç rolü) emin-emek
 - Gülbahar VAROL — FE (başlangıç rolü)  @gulbaharvarol03-lang
-- Ayşe AYDIN — DQ (başlangıç rolü, veri analisti ve kalite)
+- Ayşe AYDIN — DQ (başlangıç rolü, veri analisti ve kalite) ays4ydn
 
 ## Klasör Yapısı
 
