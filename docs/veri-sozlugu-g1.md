@@ -4,7 +4,7 @@
 > **Kodlama:** UTF-8 (BOM)
 > **Ayırıcı:** Virgül (`,`)
 > **Satır sayısı:** 200 (başlık hariç)
-> **Üretici betik:** `scripts/veri-uret.py` (tohum: `42`)
+> **Üretici betik:** `src/veri-uret.py` (tohum: `42`)
 
 ---
 

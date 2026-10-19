@@ -18,7 +18,7 @@ Bu beceri, sigorta talepleri ve ödeme kayıtlarını içeren sentetik (yapay) v
 
 ```bash
 # Veriyi üret (veya yeniden üret)
-python scripts/veri-uret.py
+python src/veri-uret.py
 ```
 
 Çıktı: `data/talepler-odemeler.csv`
@@ -47,7 +47,7 @@ Detaylı alan tanımları ve kategorik değerler için bkz. [`docs/veri-sozlugu-
 │   └── talepler-odemeler.csv    # Üretilen veri seti
 ├── docs/
 │   └── veri-sozlugu-g1.md       # Veri sözlüğü / şema
-├── scripts/
+├── src/
 │   └── veri-uret.py             # Üretici betik
 └── skills/
     └── be-veri/
