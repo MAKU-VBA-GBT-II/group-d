@@ -6,6 +6,6 @@ Bu repodaki skill'ler ve ne işe yaradıkları. Ajan araçları bu dosyayı otom
 |---|---|---|---|
 | pm-rapor | `skills/pm-rapor/SKILL.md` | Haftalık sprint raporunu Issue/commit izlerinden hazırlar | "pm-rapor ile Hafta N raporunu yaz" |
 | be-veri | `skills/be-veri/SKILL.md` | Sigorta talep/ödeme verisini üretir | (BE ekler) |
-| dq-analiz | `skills/dq-analiz/SKILL.md` | Metrik hesabı ve bulgular | (DQ ekler) |
+| dq-analiz | `skills/dq-analiz/SKILL.md` | Metrik hesabı, kırılımlar ve analiz raporu (docs/analiz-g1.md) | "dq-analiz ile veriyi analiz et ve raporu yaz" |
 | fe-gorsel | `skills/fe-gorsel/SKILL.md` | 2 grafik üretir | (FE ekler) |
-| dq-test | `skills/dq-test/SKILL.md` | Veri kalitesi test senaryoları | (DQ ekler) |
+| dq-test | `skills/dq-test/SKILL.md` | Veri kalitesi test senaryoları (tests/test-cases.md) | "dq-test ile test senaryolarını hazırla" |
