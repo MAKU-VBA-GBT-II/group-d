@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 DQ: Sigorta Talepleri ve Ödemeleri Veri Analizi Betiği
-Bu betik, data/talepler-odemeler.csv dosyasını okuyarak Issue #13'te belirtilen
-tüm metrikleri (toplam, ortalama, talep türü kırılımı, trend analizi, en sık 3 talep türü)
-ve ek kırılımları hesaplar.
+Bu betik, data/talepler-odemeler.csv dosyasını okuyarak temel metrikleri,
+kırılımları ve 12 çeyreklik zaman serisi trendini hesaplar.
 """
 
 import pandas as pd
@@ -39,15 +38,16 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
     ).sort_values(by="toplam_talep", ascending=False)
     kirilim_talep_turu["pay_yuzde"] = (kirilim_talep_turu["toplam_talep"] / toplam_talep_tutari) * 100
 
-    # 4. Metrik: Zaman / Trend Analizi (Yıllık ve Dönemsel Trend)
-    df["yil"] = df["talep_tarihi_dt"].dt.year
-    trend_yillik = df.groupby("yil").agg(
+    # 4. Metrik 4: Çeyreklik Zaman Serisi / Trend Analizi (12 Çeyrek)
+    df["ceyrek"] = df["talep_tarihi_dt"].dt.to_period("Q").astype(str)
+    trend_ceyrek = df.groupby("ceyrek").agg(
         talep_adedi=("talep_id", "count"),
         toplam_talep=("talep_tutari", "sum"),
-        ortalama_talep=("talep_tutari", "mean")
+        ortalama_talep=("talep_tutari", "mean"),
+        toplam_odeme=("odeme_tutari", "sum")
     )
 
-    # 5. Metrik: En Sık Görülen 3 Talep Türü (Frekans Bazında Top-3)
+    # 5. Metrik 5: En Sık Görülen 3 Talep Türü
     en_sik_3_tur = df["talep_turu"].value_counts().head(3).reset_index()
     en_sik_3_tur.columns = ["talep_turu", "talep_adedi"]
     en_sik_3_tur["pay_yuzde"] = (en_sik_3_tur["talep_adedi"] / toplam_kayit) * 100
@@ -61,7 +61,7 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
     ).sort_values(by="talep_adedi", ascending=False)
     kirilim_durum["pay_yuzde"] = (kirilim_durum["talep_adedi"] / toplam_kayit) * 100
 
-    # Ek Kırılım: Şehirlere Göre Top-3 İl
+    # Ek Sıralama: Şehirlere Göre Top-3 İl
     top3_sehir = df.groupby("sehir").agg(
         talep_adedi=("talep_id", "count"),
         toplam_talep=("talep_tutari", "sum")
@@ -76,12 +76,14 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
     print(f"3. Toplam Ödeme Tutarı: {toplam_odeme_tutari:,.2f} TL")
     print(f"4. Ortalama Talep Tutarı: {ortalama_talep_tutari:,.2f} TL")
     print(f"5. Onaylanan Talepler Ortalama Ödeme Tutarı: {ortalama_odeme_onaylanan:,.2f} TL")
-    
+    print(f"   - Onaylanma Oranı: %{onay_orani:.1f}")
+    print(f"   - Onaylananlarda Ödeme/Talep Karşılama Oranı: %{odeme_karsilama_orani:.2f}")
+
     print("\n--- METRİK 3: TALEP TÜRÜNE GÖRE KIRILIM ---")
     print(kirilim_talep_turu.to_string())
 
-    print("\n--- METRİK 4: YILLIK TREND ---")
-    print(trend_yillik.to_string())
+    print("\n--- METRİK 4: ÇEYREKLİK TREND ANALİZİ (12 ÇEYREK) ---")
+    print(trend_ceyrek.to_string())
 
     print("\n--- METRİK 5: EN SIK GÖRÜLEN 3 TALEP TÜRÜ ---")
     print(en_sik_3_tur.to_string(index=False))
@@ -101,7 +103,7 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
         "ortalama_talep_tutari": ortalama_talep_tutari,
         "ortalama_odeme_onaylanan": ortalama_odeme_onaylanan,
         "kirilim_talep_turu": kirilim_talep_turu,
-        "trend_yillik": trend_yillik,
+        "trend_ceyrek": trend_ceyrek,
         "en_sik_3_tur": en_sik_3_tur,
         "kirilim_durum": kirilim_durum,
         "top3_sehir": top3_sehir

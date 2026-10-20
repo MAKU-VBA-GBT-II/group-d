@@ -10,20 +10,22 @@ Bu skill, üretilen veri setinin (`data/talepler-odemeler.csv`) veri sözlüğü
 ## Amaç
 
 - Veri setinde eksik, hatalı, sınır dışı veya şemaya uymayan kayıtları tespit etmek.
-- Hafta 3'te test senaryolarını ve kabul kriterlerini belirlemek (`tests/test-cases.md`).
+- Hafta 3'te test senaryolarını, ID'lerini, adımlarını ve beklenen sonuçlarını belirlemek (`tests/test-cases.md`).
 - Hafta 4'te testleri çalıştırıp gerçekleşen sonuçları raporlamak.
 
 ## Adımlar
 
 1. `docs/veri-sozlugu-g1.md` dosyasındaki alan tipleri, tutar aralıkları, kategori listeleri ve boş değer kurallarını incele.
-2. En az 5 temel kalite boyutunu kapsayan senaryolar tanımla:
-   - Dosya varlığı ve kodlama (UTF-8 BOM)
-   - Satır sayısı doğrulaması (200 satır)
-   - Sütun isimleri ve sayısı (9 alan)
-   - Tipler ve branş bazlı min/maks tutar aralıkları
-   - Kategorik değer kümeleri ve koşullu boş değer kuralları
+2. 7 temel kalite boyutunu kapsayan senaryolar tanımla:
+   - **TC-01:** Dosya varlığı ve kodlama (UTF-8 BOM).
+   - **TC-02:** Boyut ve sütun yapısı (200 satır + başlık, 9 alan).
+   - **TC-03:** `talep_id` benzersizliği ve `TLP-XXXXX` formatı.
+   - **TC-04:** Kategorik değer kümeleri (branş, durum, şehir, ödeme yöntemi).
+   - **TC-05:** Onaylanmayan taleplerde tutarın 0.0 olması ve tarih/yöntem alanlarının boşluğu.
+   - **TC-06:** Onaylanan taleplerde %60–100 ödeme oranı ve 5–90 gün ödeme vadesi.
+   - **TC-07:** Branş bazlı min–maks tutar sınırları.
 3. Senaryoları, beklenen sonuçları ve test adımlarını `tests/test-cases.md` tablosuna işle.
-4. Hafta 4'te testleri yürütüp "Gerçekleşen Sonuç" ve "Durum" sütunlarını güncelle.
+4. Hafta 4'te testleri yürütüp "Gerçekleşen Sonuç" ve "Geçti / Kaldı" sütunlarını güncelle.
 
 ## Kullandığı Dosyalar
 

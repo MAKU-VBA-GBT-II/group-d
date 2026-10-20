@@ -1,17 +1,11 @@
 ---
 name: dq-analiz
-description: Sigorta talepleri ve ödemeleri verisinden metrik hesaplar, kırılımları inceler ve analiz raporu (docs/analiz-g1.md) üretir.
+description: Sigorta talepleri ve ödemeleri verisinden 5+ metrik hesaplar, 12 çeyreklik trendi inceler ve analiz raporu (docs/analiz-g1.md) üretir.
 ---
 
 # dq-analiz: Veri Analizi ve Metrik Raporlama
 
-Bu skill, üretilen sentetik sigorta talep ve ödeme veri setini (`data/talepler-odemeler.csv`) analiz ederek temel metrikleri, branş ve durum kırılımlarını hesaplar, somut iş gözlemleri ve eylem önerisi üretir.
-
-## Amaç
-
-- Ham veri setinden özet istatistikler ve yönetsel metrikler çıkarmak.
-- FE (Frontend / Görselleştirici) rolüne grafik üretimi için referans veri ve göstergeler sağlamak.
-- Veri kalitesi ve operasyonel darboğazları tespit edip raporlamak.
+Bu skill, üretilen sentetik sigorta talep ve ödeme veri setini (`data/talepler-odemeler.csv`) analiz ederek temel metrikleri, 12 çeyreklik zaman serisi trendini, branş kırılımlarını hesaplar; somut iş gözlemleri ve eylem önerisi üretir.
 
 ## Adımlar
 
@@ -20,11 +14,12 @@ Bu skill, üretilen sentetik sigorta talep ve ödeme veri setini (`data/talepler
    - Toplam talep ve ödeme tutarları
    - Ortalama talep ve onaylanan ödeme tutarları
    - Talep türüne (branşa) göre adet, toplam tutar ve ortalama kırılımı
-   - Dosya durumuna (Onaylandı, Beklemede vb.) göre dağılım kırılımı
-   - En yüksek talep tutarına sahip Top-3 il ve bireysel dosya sıralamaları
+   - 12 çeyreklik (2023-Q1 — 2025-Q4) zaman serisi talep ve ödeme trendi
+   - En sık görülen 3 talep türü (Sağlık, DASK, Konut)
+   - Ek kırılım (dosya durumları) ve ek sıralama (Top-3 il)
 3. Hesaplanan her metriğe 1–2 cümlelik iş analizi yorumu ekle.
-4. Portföy riski, likidite ihtiyacı ve bölgesel dağılım ekseninde en az 3 somut gözlem çıkar.
-5. Şirket yönetimi için uygulanabilir 1 stratejik eylem önerisi formüle et.
+4. Portföy riski, likidite ihtiyacı ve bölgesel dağılım ekseninde 3 somut gözlem çıkar.
+5. Şirket yönetimi için uygulanabilir 1 stratejik eylem önerisi (nakit karşılık formülüyle) formüle et.
 6. Tüm çıktıları `docs/analiz-g1.md` dosyasında dokümante et.
 7. FE rolü için `G1-gorsel` Issue'sına devir teslim yorumu hazırla.
 

@@ -2,7 +2,7 @@
 
 > **Hazırlayan:** Ayşe AYDIN (DQ — Veri Analisti ve Kalite Mühendisi)  
 > **Tarih:** 2026-10-20  
-> **Kaynak Veri:** `data/talepler-odemeler.csv` (200 satır, 9 alan, Commit: `c67da13`)  
+> **Kaynak Veri:** `data/talepler-odemeler.csv` (200 satır, 9 alan, Tohum: 42)  
 > **Analiz Betiği:** `src/analiz.py`  
 > **İlgili Skill:** `skills/dq-analiz/SKILL.md`  
 > **Hedef Issue:** [Issue #13: G1-analiz — Metrikleri hesapla ve bulguları yaz (DQ)](https://github.com/MAKU-VBA-GBT-II/group-d/issues/13)
@@ -13,27 +13,26 @@
 
 Bu analiz raporu, **Emin Sigorta** portföyüne ait sentetik sigorta talep ve tazminat ödeme verileri (`data/talepler-odemeler.csv`) üzerinden hazırlanmıştır. Veri seti, 2023–2025 yılları arasındaki 200 adet hasar talebini ve bunlara ilişkin ödeme süreçlerini kapsamaktadır.
 
-Analizin temel amacı; şirketin branş bazındaki hasar yoğunluğunu, talep sonuçlanma oranlarını, finansal risk dağılımını belirlemek ve **FE (Frontend / Görselleştirici)** adımında üretilecek grafikler için referans metrikleri sağlamaktır.
+Analizin temel amacı; şirketin branş bazındaki hasar yoğunluğunu, talep sonuçlanma oranlarını, 12 çeyreklik finansal risk trendini belirlemek ve **FE (Frontend / Görselleştirici)** adımında üretilecek grafikler için referans metrikleri sağlamaktır.
 
 ---
 
-## 2. Temel Metrikler (Issue #13 Kabul Kriterleri)
+## 2. Temel Metrikler (5 Metrik)
 
-Aşağıdaki metrikler `src/analiz.py` çalıştırılarak veri setinden doğrudan ve tekrarlanabilir biçimde hesaplanmıştır.
+Aşağıdaki metrikler `src/analiz.py` betiği çalıştırılarak veri setinden doğrudan ve tekrarlanabilir biçimde hesaplanmıştır.
 
 ### Metrik 1: Toplam Talep ve Ödeme Tutarı (Toplam Metriği)
 * **Toplam Talep Sayısı:** 200 adet
 * **Toplam Talep Edilen Tutar:** **20.275.728,27 TL**
 * **Toplam Ödenen Tazminat Tutarı:** **4.016.662,66 TL**
-* *Yorum:* Şirkete 2023–2025 döneminde iletilen toplam hasar talebi yaklaşık 20,28 Milyon TL olup, bu taleplerin 4,02 Milyon TL'lik kısmı onaylanarak hak sahiplerine ödenmiştir.
+* *Yorum:* Şirkete 2023–2025 döneminde iletilen toplam hasar talebi 20,28 Milyon TL olup, onaylanan dosyalara toplam 4,02 Milyon TL tazminat ödenmiştir.
 
 ### Metrik 2: Ortalama Talep ve Onaylanan Ödeme Tutarı (Ortalama Metriği)
 * **Ortalama Talep Tutarı:** **101.378,64 TL**
 * **Onaylanan Talepler İçin Ortalama Ödeme Tutarı:** **80.333,25 TL**
-* *Yorum:* Talep başına ortalama hasar maliyeti 101 Bin TL seviyesindedir. Onaylanan dosyalarda talep edilen tutarların ortalama %79,65'i tazmin edilmiş ve dosya başına ortalama 80.333 TL ödeme yapılmıştır.
+* *Yorum:* Talep başına ortalama hasar maliyeti 101.378 TL'dir. Onaylanan dosyalarda talep edilen tutarların ortalama %79,65'i karşılanmış ve dosya başına ortalama 80.333 TL ödeme yapılmıştır.
 
-### Metrik 3: Talep Türüne (Branşa) Göre Finansal Dağılım (Talep Türü Kırılımı)
-Sigorta branşlarına göre dağılım incelendiğinde adet ve maliyet arasında belirgin bir ayrışma görülmektedir:
+### Metrik 3: Talep Türüne Göre Finansal Dağılım (Talep Türü Kırılımı)
 
 | Talep Türü | Talep Adedi | Toplam Talep Tutarı (TL) | Ortalama Talep (TL) | Toplam Ödeme (TL) | Tutar Payı (%) |
 |:---|:---:|:---:|:---:|:---:|:---:|
@@ -45,22 +44,30 @@ Sigorta branşlarına göre dağılım incelendiğinde adet ve maliyet arasında
 | **Trafik** | 26 | 1.012.456,64 | 38.940,64 | 109.418,20 | %4,99 |
 | **TOPLAM** | **200** | **20.275.728,27** | **101.378,64** | **4.016.662,66** | **%100,00** |
 
-* *Yorum:* Hayat branşı sadece 27 talep (%13,5 adet) ile toplam portföy tutarının %34,92'sini tek başına oluşturarak en yüksek maliyetli branş olmuştur. Hayat ve DASK birlikte toplam talebin yaklaşık %60'ını oluşturmaktadır.
+* *Yorum:* Sağlık branşı 43 talep (%21,5 adet payı) ile adet bazında lider olmasına karşın, Hayat branşı sadece 27 talep ile portföyün %34,92'sini tek başına oluşturarak en büyük mali yükü temsil etmektedir.
 
-### Metrik 4: Yıllık ve Dönemsel Trend Analizi (Trend Metriği)
-Taleplerin 2023–2025 yılları arasındaki yıllık seyri:
+### Metrik 4: Çeyreklik Zaman Serisi / Trend Analizi (12 Çeyrek)
+FE görselleştirmesi için 2023–2025 dönemine ait 12 çeyreklik ayrıntılı zaman serisi:
 
-| Yıl | Talep Adedi | Toplam Talep Tutarı (TL) | Ortalama Talep Tutarı (TL) |
-|:---:|:---:|:---:|:---:|
-| **2023** | 66 | 7.373.101,97 | 111.713,67 |
-| **2024** | 67 | 6.941.255,75 | 103.600,83 |
-| **2025** | 67 | 5.961.370,55 | 88.975,68 |
-| **TOPLAM** | **200** | **20.275.728,27** | **101.378,64** |
+| Çeyrek (Dönem) | Talep Adedi | Toplam Talep Tutarı (TL) | Ortalama Talep (TL) | Toplam Ödenen Tutar (TL) |
+|:---:|:---:|:---:|:---:|:---:|
+| **2023-Q1** | 10 | 1.271.041,42 | 127.104,14 | 389.944,74 |
+| **2023-Q2** | 15 | 1.459.300,91 | 97.286,73 | 433.160,31 |
+| **2023-Q3** | 24 | 2.865.336,94 | 119.389,04 | 93.431,60 |
+| **2023-Q4** | 17 | 1.777.422,70 | 104.554,28 | 181.858,10 |
+| **2024-Q1** | 14 | 1.018.135,63 | 72.723,97 | 164.117,92 |
+| **2024-Q2** | 22 | 1.841.810,84 | 83.718,67 | 588.926,48 |
+| **2024-Q3** | 14 | 1.901.277,72 | 135.805,55 | 507.799,96 |
+| **2024-Q4** | 17 | 2.180.031,56 | 128.237,15 | 518.373,36 |
+| **2025-Q1** | 13 | 1.068.300,05 | 82.176,93 | 502.687,23 |
+| **2025-Q2** | 19 | 1.206.963,82 | 63.524,41 | 93.243,08 |
+| **2025-Q3** | 21 | 1.706.985,28 | 81.285,01 | 362.048,15 |
+| **2025-Q4** | 14 | 1.979.121,40 | 141.365,81 | 181.071,73 |
+| **TOPLAM** | **200** | **20.275.728,27** | **101.378,64** | **4.016.662,66** |
 
-* *Yorum:* Yıllık talep sayısı 66–67 adet ile son derece dengeli bir dağılım göstermektedir. Toplam talep tutarı 2023'te 7,37 Milyon TL iken 2025'te 5,96 Milyon TL'ye gerileyerek ortalama hasar maliyetinde %20,3'lük bir düşüş trendi sergilemiştir.
+* *Yorum:* Her çeyrekte 10 ile 24 arasında talep gelmiştir. En yüksek talep tutarı ve dosya adedi 2023'ün 3. çeyreğinde (24 talep, 2,87 Milyon TL) görülmüş; genel trendde dönemsel dalgalanmalar olmakla birlikte şirket istikrarlı bir dosya akışı yaşamıştır.
 
-### Metrik 5: En Sık Görülen 3 Talep Türü (En Sık 3 Talep Türü)
-Dosya adedi bakımından en yüksek işlem yoğunluğuna sahip ilk 3 sigorta türü:
+### Metrik 5: En Sık Görülen 3 Talep Türü (İşlem Hacmi Top-3)
 
 | Sıra | Talep Türü | Dosya Adedi | Adet Bazlı Portföy Payı (%) |
 |:---:|:---|:---:|:---:|
@@ -69,13 +76,13 @@ Dosya adedi bakımından en yüksek işlem yoğunluğuna sahip ilk 3 sigorta tü
 | 3 | **Konut** | 34 | %17,0 |
 | - | **Top-3 Toplamı** | **114** | **%57,0** |
 
-* *Yorum:* Şirkete intikal eden hasar dosyalarının yarıdan fazlası (%57'si) Sağlık, DASK ve Konut sigortalarından kaynaklanmaktadır. İş yükünün en büyük kısmını Sağlık dosyaları oluşturmaktadır.
+* *Yorum:* Şirkete intikal eden hasar dosyalarının yarıdan fazlası (%57'si) Sağlık, DASK ve Konut sigortalarından kaynaklanmakta olup operasyonel iş yükünün odağını bu 3 branş oluşturmaktadır.
 
 ---
 
-## 3. Ek Kırılımlar ve Dağılımlar
+## 3. Ek Kırılımlar ve Sıralamalar
 
-### A) Dosya Durumuna Göre Dağılım
+### Ek Kırılım: Dosya Durumuna Göre Dağılım
 | Durum | Talep Adedi | Pay (%) | Toplam Talep Tutarı (TL) | Toplam Ödenen Tutar (TL) |
 |:---|:---:|:---:|:---:|:---:|
 | **Beklemede** | 51 | %25,5 | 6.034.474,81 | 0,00 |
@@ -83,11 +90,13 @@ Dosya adedi bakımından en yüksek işlem yoğunluğuna sahip ilk 3 sigorta tü
 | **Reddedildi** | 50 | %25,0 | 4.656.877,93 | 0,00 |
 | **İnceleniyor** | 49 | %24,5 | 4.541.382,52 | 0,00 |
 
-### B) En Çok Talep Tutarı Gelen Top-3 Şehir
-1. **Samsun:** 23 talep, 2.566.340,90 TL (%12,66)
-2. **Diyarbakır:** 18 talep, 2.518.595,59 TL (%12,42)
-3. **İzmir:** 17 talep, 2.127.152,61 TL (%10,49)
-*(Bu 3 şehir toplam talebin %35,57'sini oluşturmaktadır).*
+### Ek Sıralama: En Çok Talep Tutarı Gelen Top-3 Şehir
+| Sıra | Şehir | Talep Adedi | Toplam Talep Tutarı (TL) | Toplamdaki Payı (%) |
+|:---:|:---|:---:|:---:|:---:|
+| 1 | **Samsun** | 23 | 2.566.340,90 | %12,66 |
+| 2 | **Diyarbakır** | 18 | 2.518.595,59 | %12,42 |
+| 3 | **İzmir** | 17 | 2.127.152,61 | %10,49 |
+| - | **Top-3 Toplamı** | **58** | **7.212.089,10** | **%35,57** |
 
 ---
 
@@ -97,7 +106,7 @@ Dosya adedi bakımından en yüksek işlem yoğunluğuna sahip ilk 3 sigorta tü
    Adet bazında en çok talep açılan branş Sağlık (43 dosya, ortalama 27.268 TL) iken; şirketin mali riskinin %59,54'ü Hayat (7,08 Milyon TL) ve DASK (4,99 Milyon TL) branşlarında toplanmıştır. Özellikle Hayat branşında dosya başına ortalama talep 262.260 TL olup şirket ortalamasının 2,5 katıdır.
 
 2. **Gözlem 2 — Süreçte Bekleyen Yüksek Mali Yük (Likidite Riski):**  
-   İnceleniyor (49 dosya) ve Beklemede (51 dosya) statüsündeki 100 dosya, toplam 10.575.857,33 TL tutar büyüklüğüne sahiptir. Mevcut %25 onaylanma ve %79,65 ödeme/talep karşılama oranı korunduğu takdirde, bu bekleyen dosyalardan yaklaşık 2,1 Milyon TL ödeme çıkması öngörülmektedir.
+   İnceleniyor (49 dosya) ve Beklemede (51 dosya) statüsündeki 100 dosya, toplam 10.575.857,33 TL tutar büyüklüğüne sahiptir. Mevcut %25 onaylanma ve %79,65 ödeme/talep karşılama oranı korunduğu takdirde, bu bekleyen dosyalardan yaklaşık 2,1–2,2 Milyon TL ödeme çıkması öngörülmektedir.
 
 3. **Gözlem 3 — Bölgesel Yoğunlaşma ve Hasar Odağı:**  
    Metropol şehirlerden ziyade Samsun (2,57 Milyon TL) ve Diyarbakır (2,52 Milyon TL) gibi illerde talep tutarı büyüklüğü dikkat çekmektedir. En yüksek talep tutarına sahip ilk 3 şehir toplam taleplerin üçte birinden fazlasını (%35,57) oluşturmaktadır.
@@ -107,12 +116,13 @@ Dosya adedi bakımından en yüksek işlem yoğunluğuna sahip ilk 3 sigorta tü
 ## 5. Eylem Önerisi (1 Adet)
 
 * **Eylem Önerisi — Yüksek Tutarlı Dosyalar İçin Hızlı Ekspertiz ve Likidite Karşılığı:**  
-  "Beklemede" ve "İnceleniyor" durumundaki 100 dosyanın (%52,16 tutar büyüklüğü) tasfiyesi için öncelikle tutarı 200.000 TL üzeri olan Hayat ve DASK dosyalarına öncelik veren bir **"Hızlı İnceleme Kurulu"** oluşturulmalıdır. Ayrıca onay bekleyen talepler için Finans departmanı tarafından en az **2,2 Milyon TL nakit karşılık (muallak tazminat karşılığı)** ayrılmalı ve ödeme kanallarında Havale/EFT ağırlıklı süreç yönetilmelidir.
+  "Beklemede" ve "İnceleniyor" durumundaki 100 dosyanın tasfiyesi için öncelikle tutarı 200.000 TL üzeri olan Hayat ve DASK dosyalarına öncelik veren bir **"Hızlı İnceleme Kurulu"** oluşturulmalıdır.  
+  * **Nakit Karşılık Formülü:** Beklemede ve İnceleniyor durumundaki 100 dosyanın toplam talep tutarı (10.575.857,33 TL) × Şirketin tarihsel dosya onaylanma oranı (%25) × Ortalama ödeme karşılama oranı (%79,65) ≈ **2.105.811 TL (~2,1 – 2,2 Milyon TL)** olarak hesaplanmıştır. Finans departmanı bu bekleyen dosyalar için en az **2,2 Milyon TL muallak tazminat karşılığı (likidite)** ayırmalıdır.
 
 ---
 
 ## 6. Frontend (FE) Görselleştirme İçin Girdiler
 
-FE rolünün (`skills/fe-gorsel/SKILL.md`) üreteceği 2 görsel için önerilen veri eşleşmeleri:
-1. **Zaman Serisi Grafiği (Aylık/Yıllık Talep Trendi):** 2023–2025 yılları boyunca yıllık veya çeyreklik talep tutarı değişimi.
-2. **Kırılım Grafiği (Branş Dağılımı):** 6 talep türünün toplam talep tutarı içindeki payları veya en sık 3 talep türü dağılımı.
+FE rolünün (`skills/fe-gorsel/SKILL.md`) üreteceği 2 grafik için referans veriler:
+1. **Zaman Serisi Grafiği:** Yukarıdaki **Metrik 4 Çeyreklik Trend Analizi Tablosu** (12 çeyrek, 2023-Q1'den 2025-Q4'e çeyreklik toplam talep ve ödeme tutarları). 12 veri noktası ile görsel zengin ve akıcı bir çizgi grafik elde edilecektir.
+2. **Kırılım Grafiği:** Yukarıdaki **Metrik 3 Talep Türü Dağılım Tablosu** (6 branşın talep tutarları ve portföy payları).

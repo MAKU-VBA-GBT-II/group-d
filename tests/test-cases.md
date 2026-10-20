@@ -5,24 +5,24 @@
 > **Hedef Dosya:** `data/talepler-odemeler.csv`  
 > **Referans Şema:** `docs/veri-sozlugu-g1.md`  
 > **İlgili Skill:** `skills/dq-test/SKILL.md`  
-> **Not:** Dönem planı gereğince *"Gerçekleşen Sonuç"* ve *"Durum"* sütunları **Hafta 4** test yürütme aşamasında doldurulacaktır.
+> **Not:** Dönem planı gereğince *"Gerçekleşen Sonuç"* ve *"Geçti / Kaldı"* sütunları **Hafta 4** test yürütme aşamasında doldurulacaktır.
 
 ---
 
-## 1. Test Senaryoları Tablosu
+## 1. Test Senaryoları Matrisi
 
-| Test ID | Test Kategorisi | Test Adı / Senaryo | Test Adımları ve Doğrulama Kriteri | Beklenen Sonuç | Gerçekleşen Sonuç (Hafta 4) | Durum (Hafta 4) |
+| Test ID | Test Adı / Senaryo | Girdi | Test Adımları ve Doğrulama Kriteri | Beklenen Sonuç | Gerçekleşen Sonuç (Hafta 4) | Geçti / Kaldı (Hafta 4) |
 |:---:|:---|:---|:---|:---|:---:|:---:|
-| **TC-01** | Dosya Varlığı | Veri Dosyasının Varlığı ve Kodlama Uygunluğu | 1. `data/talepler-odemeler.csv` dosyasının repoda var olduğunu doğrula.<br>2. Dosyanın UTF-8 (BOM) kodlamasıyla okunabildiğini doğrula. | Dosya mevcut, erişilebilir ve UTF-8 BOM ile hatasız okunabilir olmalı. | *(Hafta 4'te doldurulacak)* | Beklemede |
-| **TC-02** | Boyut / Hacim | Satır Sayısı Doğrulaması | 1. CSV dosyasındaki toplam satır sayısını say.<br>2. Başlık satırı hariç veri satır sayısını kontrol et. | Başlık hariç tam olarak 200 satır veri bulunmalı. | *(Hafta 4'te doldurulacak)* | Beklemede |
-| **TC-03** | Şema / Yapı | Sütun Sayısı ve İsim Doğrulaması | 1. Başlık satırındaki sütun isimlerini ve sırasını oku.<br>2. `docs/veri-sozlugu-g1.md` ile birebir eşleştir: `talep_id`, `talep_tarihi`, `talep_turu`, `sehir`, `talep_tutari`, `durum`, `odeme_tutari`, `odeme_tarihi`, `odeme_yontemi`. | Tam 9 sütun bulunmalı; sütun adları ve sıraları veri sözlüğü ile eksiksiz eşleşmeli. | *(Hafta 4'te doldurulacak)* | Beklemede |
-| **TC-04** | Tipler ve Aralıklar | Tutar Değerleri ve Aralık Kuralları | 1. `talep_tutari` ve `odeme_tutari` pozitif float olmalı.<br>2. `talep_tutari` branş sınırlarında olmalı:<br>   - Kasko: 1.000 - 150.000 TL<br>   - Trafik: 500 - 80.000 TL<br>   - Sağlık: 200 - 50.000 TL<br>   - Konut: 1.000 - 200.000 TL<br>   - DASK: 5.000 - 300.000 TL<br>   - Hayat: 10.000 - 500.000 TL<br>3. `durum = 'Onaylandı'` ise `odeme_tutari`, talep tutarının %60 - %100'ü aralığında olmalı.<br>4. Onaylanmayanlarda `odeme_tutari == 0.0` olmalı. | Tüm sayısal değerler tiplere uygun olmalı ve tanımlanan min/maks limitleri aşmamalı. | *(Hafta 4'te doldurulacak)* | Beklemede |
-| **TC-05** | Kategorik Değerler | Kategori Kümeleri ve İzin Verilen Değerler | 1. `talep_turu` yalnızca 6 değerden biri olmalı (Kasko, Trafik, Sağlık, Konut, DASK, Hayat).<br>2. `durum` yalnızca 4 değerden biri olmalı (Onaylandı, Reddedildi, Beklemede, İnceleniyor).<br>3. `sehir` tanımlı 15 ilden biri olmalı.<br>4. `odeme_yontemi` yalnızca 4 değerden biri veya boş olmalı (Havale/EFT, Kredi Kartı, Çek, Nakit). | Tanımlı liste dışı hiçbir geçersiz kategorik değer veya yazım hatası içermemeli. | *(Hafta 4'te doldurulacak)* | Beklemede |
-| **TC-06** | Boş Değer Kuralları | Koşullu Boş Değer (Nullability) Uygunluğu | 1. `durum == 'Onaylandı'` olan kayıtlarda `odeme_tarihi` ve `odeme_yontemi` dolu olmalı.<br>2. `durum != 'Onaylandı'` olan kayıtlarda `odeme_tarihi` ve `odeme_yontemi` kesinlikle boş (null) olmalı.<br>3. Diğer 7 zorunlu alanda hiçbir boş değer bulunmamalı. | Yalnızca onaylı kayıtlarda (50 kayıt) ödeme bilgileri dolu; diğer 150 kayıtta boş olmalı. Zorunlu alanlarda 0 boş değer olmalı. | *(Hafta 4'te doldurulacak)* | Beklemede |
-| **TC-07** | Mantıksal Bütünlük | Tarih Formatı ve Kronolojik Tutarlılık | 1. `talep_tarihi` ve `odeme_tarihi` `YYYY-MM-DD` formatında ve 2023-01-01 ile 2025-12-31 arasında olmalı.<br>2. Onaylı kayıtlarda `odeme_tarihi >= talep_tarihi` olmalı ve aradaki fark 5 ile 90 gün arasında bulunmalı. | Tüm tarihler geçerli formatta olmalı, geçmişe dönük ödeme veya mantıksız tarih aralığı olmamalı. | *(Hafta 4'te doldurulacak)* | Beklemede |
+| **TC-01** | Dosya Varlığı ve Erişilebilirlik | `data/talepler-odemeler.csv` | 1. Dosyanın repoda var olduğunu doğrula.<br>2. Dosyanın boş olmadığını ve UTF-8 (BOM) ile okunabildiğini denetle. | Dosya mevcut, boş değil (>0 byte) ve UTF-8 BOM ile hatasız okunabiliyor. | | |
+| **TC-02** | Boyut ve Sütun Yapısı | `data/talepler-odemeler.csv` | 1. Satır sayısını say (başlık hariç).<br>2. Sütun sayısını ve adlarını `docs/veri-sozlugu-g1.md` ile karşılaştır:<br>`talep_id, talep_tarihi, talep_turu, sehir, talep_tutari, durum, odeme_tutari, odeme_tarihi, odeme_yontemi`. | Tam 200 veri satırı + 1 başlık satırı; tam 9 sütun, isimleri ve sıraları sözlükle birebir aynı. | | |
+| **TC-03** | `talep_id` Benzersizliği ve Formatı | `talep_id` sütunu | 1. 200 kaydın tamamında `talep_id` değerlerinin benzersiz (unique) olduğunu kontrol et.<br>2. `TLP-XXXXX` regex formatına (`^TLP-\d{5}$`) uygunluğunu doğrula. | 200 benzersiz ID olmalı; mükerrer kayıt bulunmamalı; format `TLP-00001` formatında olmalı. | | |
+| **TC-04** | Kategorik Değerlerin Sözlük Uygunluğu | `talep_turu`, `durum`, `sehir`, `odeme_yontemi` | 1. `talep_turu`: Yalnızca 6 branş (Kasko, Trafik, Sağlık, Konut, DASK, Hayat).<br>2. `durum`: Yalnızca 4 değer (Onaylandı, Reddedildi, Beklemede, İnceleniyor).<br>3. `sehir`: Yalnızca sözlükteki 15 il.<br>4. `odeme_yontemi`: Yalnızca 4 yöntem (Havale/EFT, Kredi Kartı, Çek, Nakit) veya boş. | Sözlük dışı hiçbir tanımsız kategori değeri veya yazım hatası içermemeli. | | |
+| **TC-05** | Onaylanmayan Taleplerde Boş Değer Kuralları | `durum != 'Onaylandı'` kayıtları (150 kayıt) | 1. `durum` değeri Onaylandı olmayan kayıtları filtrele.<br>2. Bu kayıtlarda `odeme_tutari == 0.0` olduğunu doğrula.<br>3. `odeme_tarihi` ve `odeme_yontemi` alanlarının tamamen boş (NaN/null) olduğunu denetle. | 150 kaydın tamamında `odeme_tutari = 0.0` olmalı; `odeme_tarihi` ve `odeme_yontemi` kesinlikle boş olmalı. | | |
+| **TC-06** | Onaylanan Taleplerde Ödeme ve Tarih Kuralları | `durum == 'Onaylandı'` kayıtları (50 kayıt) | 1. `durum == 'Onaylandı'` olan kayıtları filtrele.<br>2. `odeme_tutari`nın talep tutarının %60'ı ile %100'ü arasında olduğunu kontrol et.<br>3. `odeme_tarihi`nin `talep_tarihi`nden 5 ile 90 gün sonra olduğunu doğrula.<br>*(Not: 2025 sonundaki 2 kayıtta ödeme tarihi mantıklı olarak 2026'ya taşmaktadır; aralık dışı sayılmaz).* | 50 onaylı kaydın tamamında ödeme oranı %60–100 aralığında olmalı; ödeme tarihi 5–90 gün sonra gerçekleşmiş olmalı. | | |
+| **TC-07** | Branş Bazlı Tutar Aralıkları (Min–Maks) | `talep_tutari` ve `talep_turu` | 1. Branş bazında sözlükteki limitleri kontrol et:<br>- Kasko: 1.000 – 150.000 TL<br>- Trafik: 500 – 80.000 TL<br>- Sağlık: 200 – 50.000 TL<br>- Konut: 1.000 – 200.000 TL<br>- DASK: 5.000 – 300.000 TL<br>- Hayat: 10.000 – 500.000 TL | 200 kaydın tamamında `talep_tutari` ilgili branşın min ve maks sınırları içinde kalmalı. | | |
 
 ---
 
-## 2. Test Yürütme Talimatı
+## 2. Hafta 4 Yürütme Talimatı
 
-Hafta 4'te bu senaryolar `tests/` veya `src/` altındaki otomatik doğrulama betiği ile çalıştırılacak ve sonuçlar yukarıdaki tablonun *"Gerçekleşen Sonuç"* ve *"Durum"* sütunlarına işlenecektir.
+Hafta 4'te bu 7 senaryo otomatik test betiği ile `data/talepler-odemeler.csv` üzerinde çalıştırılacak ve sonuçlar tablodaki *"Gerçekleşen Sonuç"* ile *"Geçti / Kaldı"* sütunlarına işlenecektir.
