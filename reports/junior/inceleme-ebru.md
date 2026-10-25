@@ -19,4 +19,4 @@ Bu çalışma, Emin Sigorta mini veri hattı projesinde kıdemli ekip üyelerimi
 - Süreçte bekleyen 100 dosya için hesaplanan 2,2 Milyon TL'lik nakit karşılık formülünün raporda açıkça belirtilmesi finansal şeffaflığı ve güvenilirliği artırmıştır.
 
 ## 4. Sonuç
-incelenen kısımlarda kritik bir uyumsuzluk görülmemiştir. Test ve görselleştirme adımlarının onayı DQ ve PM'e aittir.
+İncelenen kısımlarda kritik bir uyumsuzluk görülmemiştir. Test ve görselleştirme adımlarının onayı DQ ve PM'e aittir.
