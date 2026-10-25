@@ -85,5 +85,5 @@ Dönem planı (§GÖREV 1 → Hafta 4) gereğince, `tests/test-cases.md` dosyas�
 ## 3. Açılan Hata ve İyileştirme Kayıtları
 
 Dönem planı gereğince test sonuçlarına istinaden depoda 2 adet Issue açılmıştır:
-1. **BE için (Hata - `bug`):** *2025 yılı sonundaki taleplerde ödeme tarihinin 2026 yılına taşması* (`TLP-00074`, `TLP-00123`).
-2. **FE için (İyileştirme - `enhancement`):** *Çeyreklik trend grafiğindeki tepe etiketlerine para birimi (TL) eklenmesi*.
+1. **BE için (Hata - `bug`):** [#23 - 2025 yılı sonundaki onaylı taleplerde ödeme tarihi 2026 yılına taşıyor](https://github.com/MAKU-VBA-GBT-II/group-d/issues/23) (`TLP-00074`, `TLP-00123`).
+2. **FE için (İyileştirme - `enhancement`):** [#24 - Çeyreklik trend grafiğindeki tepe etiketlerine para birimi (TL) eklenmesi](https://github.com/MAKU-VBA-GBT-II/group-d/issues/24).
