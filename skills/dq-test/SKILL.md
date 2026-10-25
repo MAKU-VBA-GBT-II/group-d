@@ -32,7 +32,14 @@ Bu skill, üretilen veri setinin (`data/talepler-odemeler.csv`) veri sözlüğü
 - `docs/veri-sozlugu-g1.md` (kural ve şema referansı)
 - `data/talepler-odemeler.csv` (test edilen veri)
 - `tests/test-cases.md` (test senaryoları ve sonuç matrisi)
+- `tests/test_veri_kalitesi.py` (otomatik test paketi)
+- `tests/test-log.md` (test yürütme günlüğü)
 
 ## Nasıl Çalıştırılır
 
-Ajan ortamında: *"dq-test skill'ini kullanarak tests/test-cases.md dosyasında veri kalitesi senaryolarını oluştur"* komutu verilir.
+```bash
+# Otomatik veri kalitesi test paketini çalıştır
+python tests/test_veri_kalitesi.py
+```
+
+Ajan ortamında: *"dq-test skill'ini kullanarak tests/test_veri_kalitesi.py test paketini çalıştır ve tests/test-log.md dosyasında sonuçları raporla"* komutu verilir.
