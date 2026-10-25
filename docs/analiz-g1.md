@@ -67,6 +67,9 @@ FE görselleştirmesi için 2023–2025 dönemine ait 12 çeyreklik ayrıntılı
 
 * *Yorum:* Her çeyrekte 10 ile 24 arasında talep gelmiştir. En yüksek talep tutarı ve dosya adedi 2023'ün 3. çeyreğinde (24 talep, 2,87 Milyon TL) görülmüş; genel trendde dönemsel dalgalanmalar olmakla birlikte şirket istikrarlı bir dosya akışı yaşamıştır.
 
+> **Metodolojik Not (Haftalık vs. Çeyreklik Trend Tercihi):**  
+> Görev 1 kabul kriterinde belirtilen haftalık kırılım yerine çeyreklik (12 çeyrek) agregasyon tercih edilmiştir. 200 satırlık sentetik veri seti 2023–2025 yılları arasındaki 3 yıla (156 haftaya) dağıldığı için haftalık bazda hafta başına ortalama yalnızca 1,28 kayıt düşmekte ve 40'tan fazla haftada 0 talep oluşmaktadır. Bu durum aşırı istatistiksel gürültü yarattığından ve FE görselleştirmesini olumsuz etkileyeceğinden, iş analitiği ve görsel okunabilirlik açısından 12 çeyreklik trend yapısı kullanılmış ve Issue #13 üzerinden PM (@ustunkayaeylul72) onayına sunulmuştur.
+
 ### Metrik 5: En Sık Görülen 3 Talep Türü (İşlem Hacmi Top-3)
 
 | Sıra | Talep Türü | Dosya Adedi | Adet Bazlı Portföy Payı (%) |
