@@ -29,6 +29,20 @@ Kendi satırınızı başlangıç rolünüzle ekleyin. Lider `PM`'dir; diğer ü
 | `data/` | Üretilen veri dosyaları (`.csv`, `.json`) |
 | `visuals/` | Dışa aktarılmış grafikler (`.png`) |
 | `docs/` | `veri-sozlugu.md`, `requirements.md`, `user-manual.md` |
-| `tests/` | `test-cases.md`, `test-log.md` |
+| `tests/` | `test-cases.md`, `test-log.md`, `test_veri_kalitesi.py` |
 | `reports/` | Haftalık sprint raporları (`report-wXX.md`) |
 | `exchange/` | Görev 3 veri değişimi (`output.csv`) |
+
+## Hızlı Başlangıç & Çalıştırma Talimatları
+
+### 1. Veri Analizi Betiğini Çalıştırma (DQ)
+```bash
+python src/analiz.py
+```
+*Tüm temel metrikleri, 12 çeyreklik zaman serisi trendini ve branş/şehir kırılımlarını hesaplar.*
+
+### 2. Otomatik Veri Kalitesi Testlerini Koşma (DQ)
+```bash
+python tests/test_veri_kalitesi.py
+```
+*`tests/test-cases.md` dosyasında tanımlanan 7 veri kalitesi senaryosunu programatik olarak sınar ve `tests/test-log.md` ile uyumunu doğrular.*

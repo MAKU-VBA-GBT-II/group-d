@@ -87,3 +87,32 @@ Dönem planı (§GÖREV 1 → Hafta 4) gereğince, `tests/test-cases.md` dosyas�
 Dönem planı gereğince test sonuçlarına istinaden depoda 2 adet Issue açılmıştır:
 1. **BE için (Hata - `bug`):** [#23 - 2025 yılı sonundaki onaylı taleplerde ödeme tarihi 2026 yılına taşıyor](https://github.com/MAKU-VBA-GBT-II/group-d/issues/23) (`TLP-00074`, `TLP-00123`).
 2. **FE için (İyileştirme - `enhancement`):** [#24 - Çeyreklik trend grafiğindeki tepe etiketlerine para birimi (TL) eklenmesi](https://github.com/MAKU-VBA-GBT-II/group-d/issues/24).
+
+---
+
+## 4. DAMA-DMBOK Veri Kalitesi Boyutları Karnesi (Data Quality Scorecard)
+
+Veri Analitiği ve Kalite (DQ) rolü kapsamında veri seti 6 temel DAMA-DMBOK kalite boyutu üzerinden değerlendirilmiştir:
+
+| Kalite Boyutu | Hedef Kriter | Gerçekleşen Başarı | Durum |
+|:---|:---|:---:|:---:|
+| **1. Tamlık (Completeness)** | Zorunlu alanlarda eksik değer olmaması; koşullu boş değer kuralları | **%100.0** (150/150 onaylanmayanda ödeme tutarı 0.0 ve tarihler null) | 🟢 Mükemmel |
+| **2. Tekillik (Uniqueness)** | `talep_id` alanında sıfır mükerrer kayıt | **%100.0** (200/200 tekil benzersiz anahtar) | 🟢 Mükemmel |
+| **3. Geçerlilik (Validity)** | Tanımlı dönem ve sözlük kümelerine tam uygunluk | **%99.0** (198/200 kayıt 2023–2025 dönemi içi; 2 kayıt 2026'ya taştı) | 🟡 Şartlı Kabul (Bug #23) |
+| **4. Tutarlılık (Consistency)** | Ödeme tutarı <= Talep tutarı; %60–%100 aralığı ve vade kuralları | **%100.0** (50 onaylı kaydın tamamında mantıksal kurallar sağlandı) | 🟢 Mükemmel |
+| **5. Doğruluk (Accuracy)** | Branş bazlı parasal limitler ve agregasyon hesap doğruluğu | **%100.0** (Tüm tutarlar sözlük sınırlarında) | 🟢 Mükemmel |
+| **6. Uygunluk (Conformance)** | `TLP-XXXXX` regex, `YYYY-MM-DD` tarih ve UTF-8 BOM standartları | **%100.0** (Sözlük şablonuna %100 uyum) | 🟢 Mükemmel |
+| **GENEL KALİTE SKORU (DQI)** | **Ağırlıklı Veri Kalitesi İndeksi** | **%99.83 / 100** | 🏆 **A+ (Üstün Kalite)** |
+
+---
+
+## 5. Otomasyon ve Sürekli Entegrasyon (CI) Doğrulaması
+
+Test senaryoları `tests/test_veri_kalitesi.py` üzerinden programatik olarak yürütülmekte olup, `.github/workflows/data-quality-ci.yml` iş akışı aracılığıyla her commit ve pull request sürecinde otomatik olarak doğrulanmaktadır:
+
+```bash
+# Komut satırından otomatik test paketi çalıştırma:
+python tests/test_veri_kalitesi.py
+```
+* **Çalışma Süresi:** ~0.02 saniye
+* **Başarı Oranı:** 7/7 (%100 Başarılı)
