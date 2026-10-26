@@ -38,7 +38,7 @@ python src/veri-uret.py
 
 ## Şema
 
-Detaylı alan tanımları ve kategorik değerler için bkz. [`docs/veri-sozlugu-g1.md`](../docs/veri-sozlugu-g1.md).
+Detaylı alan tanımları ve kategorik değerler için bkz. [`docs/veri-sozlugu-g1.md`](../../docs/veri-sozlugu-g1.md).
 
 ## Dosya Yapısı
 
@@ -66,3 +66,4 @@ Bu sayede:
 
 - Python 3.10+
 - Ek paket gerekmez (yalnızca standart kütüphane: `csv`, `random`, `datetime`).
+
