@@ -121,6 +121,7 @@ Test senaryoları depoda mevcut olan `tests/test_veri_kalitesi.py` üzerinden pr
 ## 6. Bağımsız Doğrulamalar (Junior)
 
 *Ebru ve Fatma Nisa kendi doğrulama satırını buraya ekleyecektir:*
-- **Ebru Gönül (Junior):** TC-05 - 2026-10-27 - Kendi doğrulama sonucu: **GEÇTİ** - Ayşe'nin sonucu ile **aynı** - commit:'<abcd123>' Not: "150 kayıtta ödeme tutarı 0.0, diğerleri boş, kurallara uygun." 
+- **Ebru Gönül (Junior):** TC-05 - 2026-10-27 - Kendi doğrulama sonucu: **GEÇTİ** - Ayşe'nin sonucu ile **aynı** - commit:'<0312db8
+ >' Not: "150 kayıtta ödeme tutarı 0.0, diğerleri boş, kurallara uygun." 
 - **Fatma Nisa Arslan (Junior):** TC-03 - 2026-10-27 - Kendi doğrulama sonucu: **GEÇTİ** - Ayşe'nin sonucu ile **aynı** - Commit: '<
 9c6203e>' - Not: "Kendi kontrolümde senaryo başarılı geçti."
