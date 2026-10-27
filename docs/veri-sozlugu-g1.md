@@ -82,5 +82,6 @@
 
 - Veriler tamamen sentetiktir; gerçek kişi veya kurum bilgisi içermez.
 - Sabit tohum (`SEED=42`) sayesinde betik tekrar çalıştırıldığında aynı dosya üretilir.
-- Tarih aralığı: **2023-01-01** – **2025-12-31**.
+- Talep tarihi aralığı: **2023-01-01** – **2025-12-31** (yalnızca `talep_tarihi` için).
 - Ödeme tarihi, talep tarihinden **5–90 gün** sonrasıdır (yalnızca onaylananlarda).
+- Ödeme tarihi talep tarihinden 5–90 gün sonradır; bu yüzden Aralık 2025’te açılan onaylanmış talepler için `odeme_tarihi` 2026 başına (en geç 2026-03-31) taşabilir. Bu bir hata değil, kuralın sonucudur.
