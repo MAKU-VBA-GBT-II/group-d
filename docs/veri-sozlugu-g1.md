@@ -18,7 +18,7 @@
 | 4 | `sehir` | `string (categorical)` | Talebin açıldığı il. | `İstanbul` | Hayır |
 | 5 | `talep_tutari` | `float` | Talep edilen hasar/tazminat tutarı (TL). | `373359.74` | Hayır |
 | 6 | `durum` | `string (categorical)` | Talebin güncel durumu. | `Onaylandı` | Hayır |
-| 7 | `odeme_tutari` | `float` | Sigorta şirketince ödenen tutar (TL). Reddedilen/bekleyen talepler için `0.0`. | `260588.95` | Hayır |
+| 7 | `odeme_tutari` | `float` | Sigorta şirketince ödenen tutar (TL). Onaylanmayan talepler (Reddedildi, Beklemede, İnceleniyor) için `0.0`. | `260588.95` | Hayır |
 | 8 | `odeme_tarihi` | `date (YYYY-MM-DD)` | Ödemenin gerçekleştiği tarih. | `2023-03-15` | Evet* |
 | 9 | `odeme_yontemi` | `string (categorical)` | Ödeme kanalı. | `Havale/EFT` | Evet* |
 
