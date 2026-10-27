@@ -16,7 +16,7 @@ Bu skill, üretilen veri setinin (`data/talepler-odemeler.csv`) veri sözlüğü
 ## Adımlar
 
 1. `docs/veri-sozlugu-g1.md` dosyasındaki alan tipleri, tutar aralıkları, kategori listeleri ve boş değer kurallarını incele.
-2. 7 temel kalite boyutunu kapsayan senaryolar tanımla:
+2. Veri sözlüğündeki kurallara göre yedi test senaryosu tanımla:
    - **TC-01:** Dosya varlığı ve kodlama (UTF-8 BOM).
    - **TC-02:** Boyut ve sütun yapısı (200 satır + başlık, 9 alan).
    - **TC-03:** `talep_id` benzersizliği ve `TLP-XXXXX` formatı.
