@@ -1,7 +1,7 @@
 # Veri Kalitesi Test Günlüğü (Test Log) — G1 / Hafta 4
 
 > **Test Eden:** Ayşe AYDIN (DQ — Veri Analisti ve Kalite Mühendisi)  
-> **Tarih:** 2026-10-25  
+> **Tarih:** 2026-10-25 (İlk Koşum) / 2026-10-27 (Nihai Doğrulama)  
 > **Test Edilen Dosya:** `data/talepler-odemeler.csv` (Commit: `c67da13`)  
 > **Referans Şema:** `docs/veri-sozlugu-g1.md`  
 > **Test Senaryoları Matrisi:** `tests/test-cases.md`  

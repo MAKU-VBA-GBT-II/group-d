@@ -106,7 +106,7 @@ class TestVeriKalitesi(unittest.TestCase):
         self.assertTrue(onaysiz["odeme_yontemi"].isna().all(), "Onaylanmayan taleplerde ödeme yöntemi dolu kayıt var!")
 
     def test_tc06_onaylanan_taleplerde_odeme_ve_tarih_kurallari(self):
-        """TC-06: Onaylanan 50 kayıtta %60-100 ödeme oranı ve 5-90 gün vade."""
+        """TC-06: Onaylanan 50 kayıtta %60-100 ödeme oranı ve 5-90 gün vade (Sözlük Notlar bölümü uyumlu)."""
         df = pd.read_csv(self.data_path, encoding="utf-8-sig")
         onayli = df[df["durum"] == "Onaylandı"].copy()
         self.assertEqual(len(onayli), 50, "Onaylanan talep sayısı 50 olmalıdır!")
@@ -121,9 +121,10 @@ class TestVeriKalitesi(unittest.TestCase):
         fark_gun = (t_odeme - t_talep).dt.days
         self.assertTrue((fark_gun >= 5).all() and (fark_gun <= 90).all(), "Ödeme vadesi 5-90 gün aralığı dışında!")
         
-        # 2026 yılına taşma kontrolü (Bulgu / Bug #23 tespiti)
+        # 2026 yılı başına taşma kontrolü: Sözlük Notlar bölümü uyarınca en geç 2026-03-31 olmalıdır (Fixes #23 doğrulaması)
         tasankayitlar = onayli[t_odeme.dt.year > 2025]
         self.assertEqual(len(tasankayitlar), 2, "2026'ya taşan kayıt sayısı tam 2 olmalıdır (TLP-00074 ve TLP-00123)!")
+        self.assertTrue((t_odeme <= pd.to_datetime("2026-03-31")).all(), "Ödeme tarihi 2026-03-31 sınırını aşıyor!")
 
     def test_tc07_brans_bazli_tutar_araliklari(self):
         """TC-07: Her branş için min ve maks tutar sınırlarının kontrolü."""
