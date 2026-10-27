@@ -27,9 +27,11 @@
 | Üye | Rol | Bu haftaki katkı |
 |---|---|---|
 | Eylül ÜSTÜNKAYA | PM | Issue takibi, `AGENTS.md` kontrolü, skill denetimi, `report-w04.md` yazımı, release yönetimi |
-| Mehmet Emin EMEK | BE | Veri hatalarının düzeltilmesi, son veri teslimi doğrulaması, hata çözüm commit'leri |
-| Ayşe AYDIN | DQ | Test yürütme, `test-log.md` yazımı, son analiz doğrulaması, hata/iyileştirme izleme |
-| Gülbahar VAROL | FE | Grafik hata düzeltmeleri, görsel çıktının son hali, ilgili hata çözüm commit'leri |
+| Mehmet Emin EMEK | BE | Veri ve sözlük düzeltmeleri (Fixes #23 `e4cf64c`, Fixes #27 `cea93ee`), be-veri göreli yol düzeltmesi (`ca87195`) |
+| Ayşe AYDIN | DQ | Test yürütme (200/200), `test-log.md`, aylık/çeyreklik trend (`analiz-g1.md`), CI otomasyonu, onay yorumu (#13, #31) |
+| Gülbahar VAROL | FE | Çeyreklik trend veri etiketlerine TL eklenmesi (Fixes #24 `97adcea`), grafik çıktısı güncellemesi, Yan Görev 1 raporu |
+| Ebru GÖNÜL | Junior | TC-05 bağımsız doğrulaması (Issue #29, commit `0312db8`), `test-log.md` güncellemesi, Yan Görev 3 (Grup C #22) |
+| Fatma Nisa ARSLAN | Junior | TC-03 bağımsız doğrulaması (Issue #30, commit `338be0a`), `test-log.md` güncellemesi, Yan Görev 3 (Grup C #23) |
 
 ## Gelecek Hafta Planı
 - Görev 2 için ilk plan ve ekip hazırlığını başlatmak
