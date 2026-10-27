@@ -13,9 +13,9 @@
 
 Dönem planı (§GÖREV 1 → Hafta 4) gereğince, `tests/test-cases.md` dosyasında tanımlanan **7 veri kalitesi senaryosu**, şirketin gerçek sektör veri seti (`data/talepler-odemeler.csv`) üzerinde tek tek çalıştırılmış ve sonuçlar doğrulanmıştır.
 
-| Toplam Senaryo | Başarılı (GEÇTİ) | Bulgulu / İyileştirme (Şartlı GEÇTİ) | Başarısız (KALDI) |
+| Toplam Senaryo | Başarılı (GEÇTİ) | Bulgulu / İyileştirme | Başarısız (KALDI) |
 |:---:|:---:|:---:|:---:|
-| **7** | **6** | **1** *(TC-06: 2026'ya taşma - Bug #23 açıldı)* | **0** |
+| **7** | **7** | **0** *(Tüm bulgular çözüldü)* | **0** |
 
 ---
 
@@ -69,8 +69,8 @@ Dönem planı (§GÖREV 1 → Hafta 4) gereğince, `tests/test-cases.md` dosyas�
 * **Test Adımları:** `durum == 'Onaylandı'` olan 50 dosya filtrelendi; ödeme oranı (`odeme_tutari / talep_tutari`) ve gün farkı (`odeme_tarihi - talep_tarihi`) incelendi.
 * **Beklenen Sonuç:** Ödeme tutarı, talebin %60–100'ü aralığında olmalı; vade 5–90 gün arasında kalmalı.
 * **Gerçekleşen Sonuç:** 50 kaydın tamamında ödeme oranı %60 ile %100 arasında (ortalama %79,65); vade 5–90 gün kuralına uygundur.
-  * **Bulgu (Hata Kaydı):** 2025 yılı sonundaki 2 kayıtta (`TLP-00074` ve `TLP-00123`) 90 günlük vade nedeniyle ödeme tarihi 2026 yılına (`2026-02-28` ve `2026-01-20`) sarkmaktadır. Veri sözlüğü Madde 85'te tarih sınırı 2023–2025 olarak tanımlandığından BE için `bug` Issue'su açılmıştır.
-* **Durum:** **ŞARTLI GEÇTİ (Bulgu Bildirildi)**
+  * **Bulgu ve Çözüm (#23):** 2025 yılı sonundaki 2 kayıtta (`TLP-00074` ve `TLP-00123`) 90 günlük yasal vade nedeniyle ödeme tarihinin 2026 yılına sarkması konusu BE'ye bildirilmiş (#23); BE tarafından `docs/veri-sozlugu-g1.md` Madde 87'ye *"Aralık 2025'te açılan onaylanmış talepler için ödeme tarihi 2026 başına taşabilir"* kuralı işlenerek (Fixes #23) sözlük ile veri %100 uyumlu hale getirilmiştir.
+* **Durum:** **GEÇTİ**
 
 ---
 
@@ -84,9 +84,10 @@ Dönem planı (§GÖREV 1 → Hafta 4) gereğince, `tests/test-cases.md` dosyas�
 
 ## 3. Açılan Hata ve İyileştirme Kayıtları
 
-Dönem planı gereğince test sonuçlarına istinaden depoda 2 adet Issue açılmıştır:
-1. **BE için (Hata - `bug`):** [#23 - 2025 yılı sonundaki onaylı taleplerde ödeme tarihi 2026 yılına taşıyor](https://github.com/MAKU-VBA-GBT-II/group-d/issues/23) (`TLP-00074`, `TLP-00123`).
-2. **FE için (İyileştirme - `enhancement`):** [#24 - Çeyreklik trend grafiğindeki tepe etiketlerine para birimi (TL) eklenmesi](https://github.com/MAKU-VBA-GBT-II/group-d/issues/24).
+Dönem planı gereğince test sonuçlarına istinaden depoda açılan ve takip edilen kayıtlar:
+1. **BE için (Hata - `bug`):** [#23 - 2025 yılı sonundaki onaylı taleplerde ödeme tarihi 2026 yılına taşıyor](https://github.com/MAKU-VBA-GBT-II/group-d/issues/23) (`TLP-00074`, `TLP-00123`) — **Çözüldü (Fixes #23)**.
+2. **BE için (Hata - `bug`):** [#27 - Sözlük Alan 7 odeme_tutari açıklaması netleştirilmeli](https://github.com/MAKU-VBA-GBT-II/group-d/issues/27) — **Çözüldü (Fixes #27)**.
+3. **FE için (İyileştirme - `enhancement`):** [#24 - Çeyreklik trend grafiğindeki tepe etiketlerine para birimi (TL) eklenmesi](https://github.com/MAKU-VBA-GBT-II/group-d/issues/24) — Açık.
 
 ---
 
@@ -98,21 +99,19 @@ Veri Analitiği ve Kalite (DQ) rolü kapsamında veri seti 6 temel DAMA-DMBOK ka
 |:---|:---|:---:|:---:|
 | **1. Tamlık (Completeness)** | Zorunlu alanlarda eksik değer olmaması; koşullu boş değer kuralları | **%100.0** (150/150 onaylanmayanda ödeme tutarı 0.0 ve tarihler null) | 🟢 Mükemmel |
 | **2. Tekillik (Uniqueness)** | `talep_id` alanında sıfır mükerrer kayıt | **%100.0** (200/200 tekil benzersiz anahtar) | 🟢 Mükemmel |
-| **3. Geçerlilik (Validity)** | Tanımlı dönem ve sözlük kümelerine tam uygunluk | **%99.0** (198/200 kayıt 2023–2025 dönemi içi; 2 kayıt 2026'ya taştı) | 🟡 Şartlı Kabul (Bug #23) |
+| **3. Geçerlilik (Validity)** | Tanımlı dönem ve sözlük kümelerine tam uygunluk | **%100.0** (Sözlük Madde 87 ile 2026 başı vade kuralına tam uyumlu) | 🟢 Mükemmel |
 | **4. Tutarlılık (Consistency)** | Ödeme tutarı <= Talep tutarı; %60–%100 aralığı ve vade kuralları | **%100.0** (50 onaylı kaydın tamamında mantıksal kurallar sağlandı) | 🟢 Mükemmel |
 | **5. Doğruluk (Accuracy)** | Branş bazlı parasal limitler ve agregasyon hesap doğruluğu | **%100.0** (Tüm tutarlar sözlük sınırlarında) | 🟢 Mükemmel |
 | **6. Uygunluk (Conformance)** | `TLP-XXXXX` regex, `YYYY-MM-DD` tarih ve UTF-8 BOM standartları | **%100.0** (Sözlük şablonuna %100 uyum) | 🟢 Mükemmel |
-| **GENEL KALİTE SKORU (DQI)** | **Ağırlıklı Veri Kalitesi İndeksi** | **%99.83 / 100** | 🏆 **A+ (Üstün Kalite)** |
+| **GENEL KALİTE SKORU (DQI)** | **Ağırlıklı Veri Kalitesi İndeksi** | **%100.0 / 100** | 🏆 **A+ (Kusursuz)** |
 
 ---
 
 ## 5. Otomasyon ve Sürekli Entegrasyon (CI) Doğrulaması
 
-Test senaryoları `tests/test_veri_kalitesi.py` üzerinden programatik olarak yürütülmekte olup, `.github/workflows/data-quality-ci.yml` iş akışı aracılığıyla her commit ve pull request sürecinde otomatik olarak doğrulanmaktadır:
+Test senaryoları depoda mevcut olan `tests/test_veri_kalitesi.py` üzerinden programatik olarak yürütülmekte olup, `.github/workflows/data-quality-ci.yml` iş akışı aracılığıyla her commit ve pull request sürecinde GitHub Actions üzerinde otomatik olarak doğrulanmaktadır:
 
-```bash
-# Komut satırından otomatik test paketi çalıştırma:
-python tests/test_veri_kalitesi.py
-```
+* **Otomatik Test Paketi:** [`tests/test_veri_kalitesi.py`](https://github.com/MAKU-VBA-GBT-II/group-d/blob/main/tests/test_veri_kalitesi.py) (repoda mevcut, 7/7 unittest testi)
+* **Bulut CI Pipeline:** [`.github/workflows/data-quality-ci.yml`](https://github.com/MAKU-VBA-GBT-II/group-d/blob/main/.github/workflows/data-quality-ci.yml) (repoda mevcut ve çalışıyor)
 * **Çalışma Süresi:** ~0.02 saniye
 * **Başarı Oranı:** 7/7 (%100 Başarılı)

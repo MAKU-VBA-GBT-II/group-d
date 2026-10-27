@@ -38,7 +38,15 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
     ).sort_values(by="toplam_talep", ascending=False)
     kirilim_talep_turu["pay_yuzde"] = (kirilim_talep_turu["toplam_talep"] / toplam_talep_tutari) * 100
 
-    # 4. Metrik 4: Çeyreklik Zaman Serisi / Trend Analizi (12 Çeyrek)
+    # 4. Metrik 4: Zaman Serisi Trend Analizi (Aylık 36 Ay ve Çeyreklik 12 Çeyrek)
+    df["yil_ay"] = df["talep_tarihi_dt"].dt.to_period("M").astype(str)
+    trend_aylik = df.groupby("yil_ay").agg(
+        talep_adedi=("talep_id", "count"),
+        toplam_talep=("talep_tutari", "sum"),
+        ortalama_talep=("talep_tutari", "mean"),
+        toplam_odeme=("odeme_tutari", "sum")
+    )
+
     df["ceyrek"] = df["talep_tarihi_dt"].dt.to_period("Q").astype(str)
     trend_ceyrek = df.groupby("ceyrek").agg(
         talep_adedi=("talep_id", "count"),
@@ -82,7 +90,10 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
     print("\n--- METRİK 3: TALEP TÜRÜNE GÖRE KIRILIM ---")
     print(kirilim_talep_turu.to_string())
 
-    print("\n--- METRİK 4: ÇEYREKLİK TREND ANALİZİ (12 ÇEYREK) ---")
+    print("\n--- METRİK 4A: AYLIK TREND ANALİZİ (36 AY) ---")
+    print(trend_aylik.to_string())
+
+    print("\n--- METRİK 4B: ÇEYREKLİK TREND ANALİZİ (12 ÇEYREK) ---")
     print(trend_ceyrek.to_string())
 
     print("\n--- METRİK 5: EN SIK GÖRÜLEN 3 TALEP TÜRÜ ---")
@@ -103,6 +114,7 @@ def analiz_yap(csv_yolu: str = "data/talepler-odemeler.csv"):
         "ortalama_talep_tutari": ortalama_talep_tutari,
         "ortalama_odeme_onaylanan": ortalama_odeme_onaylanan,
         "kirilim_talep_turu": kirilim_talep_turu,
+        "trend_aylik": trend_aylik,
         "trend_ceyrek": trend_ceyrek,
         "en_sik_3_tur": en_sik_3_tur,
         "kirilim_durum": kirilim_durum,
