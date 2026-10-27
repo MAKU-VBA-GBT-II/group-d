@@ -61,12 +61,12 @@ def gorsellestir():
     ax.fill_between(x_indeks, trend_df["talep_milyon"], alpha=0.08, color="#1f77b4")
     ax.fill_between(x_indeks, trend_df["odeme_milyon"], alpha=0.08, color="#2ca02c")
 
-    # Veri etiketleri
+    # Veri etiketleri (TL birimiyle)
     for i, val in enumerate(trend_df["talep_milyon"]):
-        ax.annotate(f"{val:.2f}M", (i, val), textcoords="offset points",
+        ax.annotate(f"{val:.2f}M TL", (i, val), textcoords="offset points",
                     xytext=(0, 8), ha="center", fontsize=8.5, fontweight="bold", color="#144d75")
     for i, val in enumerate(trend_df["odeme_milyon"]):
-        ax.annotate(f"{val:.2f}M", (i, val), textcoords="offset points",
+        ax.annotate(f"{val:.2f}M TL", (i, val), textcoords="offset points",
                     xytext=(0, -13), ha="center", fontsize=8.5, fontweight="bold", color="#1c661c")
 
     ax.set_title("2023–2025 Çeyreklik Sigorta Talep ve Ödenen Tazminat Trendi",
