@@ -122,4 +122,4 @@ Test senaryoları depoda mevcut olan `tests/test_veri_kalitesi.py` üzerinden pr
 
 *Ebru ve Fatma Nisa kendi doğrulama satırını buraya ekleyecektir:*
 - **Ebru Gönül (Junior):** 
-- **Fatma Nisa Arslan (Junior):** 
+- **Fatma Nisa Arslan (Junior):** TC-03 - 2026-10-27 - Kendi doğrulama sonucu: **GEÇTİ** - Ayşe'nin sonucu ile **aynı** - Commit: '<abc1234>' - Not: "Kendi kontrolümde senaryo başarılı geçti."
