@@ -16,18 +16,19 @@ Bu skill, BE tarafından üretilen sentetik sigorta verisi (`data/talepler-odeme
 
 1. `G1-gorsel` Issue'su üzerindeki BE ve DQ devir teslim yorumlarını doğrula.
 2. İki grafik için taslak (mockup) hazırla ve `G1-gorsel` Issue'suna yükle.
-3. `data/talepler-odemeler.csv` dosyasını oku ve tarih alanını 12 çeyreklik dönemlere (`YYYY-QX`) ayrıştır.
-4. `src/gorsellestir.py` betiğini çalıştırarak 2 temel grafiği üret:
+3. `data/talepler-odemeler.csv` dosyasını oku; gerekli sütunların (`talep_tarihi`, `talep_turu`, `talep_tutari`, `odeme_tutari`) varlığını, eksik (null/NaN) veya hatalı kayıt olup olmadığını kontrol et ve veri bütünlüğünü doğrula.
+4. Tarih alanını 12 çeyreklik dönemlere (`YYYY-QX`) ayrıştır.
+5. `src/gorsellestir.py` betiğini çalıştırarak 2 temel grafiği üret:
    - **Grafik 1 (Zaman Serisi):** 12 çeyreklik (2023-Q1 — 2025-Q4) talep ve ödenen tazminat tutarı trend çizgisi (`visuals/ceyreklik-trend.png`).
    - **Grafik 2 (Kategorik Kırılım):** 6 sigorta branşında (Hayat, DASK, Konut, Kasko, Sağlık, Trafik) toplam talep ve ödenen tazminat tutarlarını karşılaştıran çubuk grafiği (`visuals/talep-turu-kirilimi.png`).
-5. Her iki grafiğin de şu standartları sağladığını denetle:
+6. Her iki grafiğin de şu standartları sağladığını denetle:
    - Açıklayıcı Türkçe başlık
    - X ve Y eksen etiketleri
-   - Ölçü birimi (Milyon TL / TL)
+   - Ölçü birimi (Eksenlerde ve tepe veri etiketlerinde 'Milyon TL' / 'TL' tutarlılığı)
    - Renk ve lejant ayrımı
    - Yüksek çözünürlük (300 DPI, PNG)
-6. Üretilen görselleri `visuals/` klasörüne kaydet.
-7. `G1-gorsel` Issue'suna commit hash'i ve çıktı yollarını içeren kanıt yorumu yazarak devir teslimi tamamla.
+7. Üretilen görselleri `visuals/` klasörüne kaydet.
+8. `G1-gorsel` Issue'suna commit hash'i ve çıktı yollarını içeren kanıt yorumu yazarak devir teslimi tamamla.
 
 ## Kullandığı Dosyalar
 
