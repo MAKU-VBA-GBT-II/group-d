@@ -48,5 +48,8 @@
 
 ## 5. Gelecek Hafta Planı (Görev 3)
 - Dönem Raporu 1 (`reports/donem-raporu-1.md`) teslimatının tamamlanması ve teslim Issue'sunun açılması (8 Kasım).
+
+---
+*Bu rapor, `skills/pm-rapor/SKILL.md` talimatları ve repodaki güncel commit/issue geçmişi doğrultusunda Gemini AI kullanılarak oluşturulmuştur.*
 - Partner grup olan Grup C ile veri değişimi sürecinin başlatılması.
 - Alınan partner verisinin kendi pipeline ve test ortamımıza entegre edilmesi.
