@@ -45,16 +45,18 @@ Duyuru 10 kurallarına uygun olarak seçilen açık kaynaklar ve denetim sonuçl
 
 ## 4. Rol Dağılımı ve Abonelikler
 
-Duyuru 10 kapsamında önerilen rol dağılımı ve üyelerin yapay zekâ abonelikleri:
+Duyuru 10 kapsamında ekip üyelerinin rol dağılımı ve abonelik durumu:
 
-| Ad Soyad | Görevdeki Rolü | GitHub Kullanıcı Adı | Sahip Olunan AI Aboneliği |
-|---|---|---|---|
-| **Eylül ÜSTÜNKAYA** | **Çekirdek ve Arayüz (Core & UI)** | [@ustunkayaeylul72](https://github.com/ustunkayaeylul72) | Vibe / Claude Code *(Ekip lideri koordinasyonu)* |
-| **Mehmet Emin EMEK** | **Ajan 1 (Web Veri Toplayıcı)** | [@emin-emek](https://github.com/emin-emek) | ChatGPT Plus / Vibe *(Veri hattı ve tarayıcı kazıma)* |
-| **Gülbahar VAROL** | **Ajan 2 (Veri İşleme ve Eşleme)** | [@gulbaharvarol03-lang](https://github.com/gulbaharvarol03-lang) | **Google Gemini (Advanced / Pro)** |
-| **Ayşe AYDIN** | **Ajan 3 (Denetim ve Nihai Rapor)** | [@ays4ydn](https://github.com/ays4ydn) | Vibe / Claude *(Kalite kontrol ve geri besleme)* |
-| **Ebru GÖNÜL** | **Junior Destek (Arayüz & Test)** | [@ebruug-nl](https://github.com/ebruug-nl) | ChatGPT / Açık Modeller |
-| **Fatma Nisa ARSLAN** | **Junior Destek (Arayüz & Test)** | [@nisaar-ln](https://github.com/nisaar-ln) | ChatGPT / Açık Modeller |
+| Ad Soyad | Görevdeki Rolü | GitHub Kullanıcı Adı | Sahip Olunan AI Aboneliği | Durum |
+|---|---|---|---|---|
+| **Gülbahar VAROL** | **Ajan 2 (Veri İşleme ve Eşleme)** | [@gulbaharvarol03-lang](https://github.com/gulbaharvarol03-lang) | **Google Gemini (Advanced / Pro)** | **Kesinleşti** |
+| **Eylül ÜSTÜNKAYA** | *Belirlenecek* | [@ustunkayaeylul72](https://github.com/ustunkayaeylul72) | *Belirlenecek* | Ekip içi görüşülüyor |
+| **Mehmet Emin EMEK** | *Belirlenecek* | [@emin-emek](https://github.com/emin-emek) | *Belirlenecek* | Ekip içi görüşülüyor |
+| **Ayşe AYDIN** | *Belirlenecek* | [@ays4ydn](https://github.com/ays4ydn) | *Belirlenecek* | Ekip içi görüşülüyor |
+| **Ebru GÖNÜL** | Junior Destek | [@ebruug-nl](https://github.com/ebruug-nl) | *Belirlenecek* | Ekip içi görüşülüyor |
+| **Fatma Nisa ARSLAN** | Junior Destek | [@nisaar-ln](https://github.com/nisaar-ln) | *Belirlenecek* | Ekip içi görüşülüyor |
+
+*Not: Ekip arkadaşlarımızın rol tercihleri ve abonelikleri grup içi toplantı sonrasında Issue (#33) ve bu dokümana yansıtılacaktır.*
 
 ---
 
@@ -63,4 +65,4 @@ Duyuru 10 kapsamında önerilen rol dağılımı ve üyelerin yapay zekâ abonel
 - [x] Senaryo ve üç ajanın birer cümlelik tanımı yazıldı.
 - [x] Web kaynakları listelendi; en az biri tarayıcı (headless browser) gerektiriyor; robots.txt ve kullanım şartları kontrol edildi.
 - [x] Sentetik veri simülasyonunun web kaynaklarıyla eşleşme planı hazırlandı.
-- [x] Rol listesi ve abonelikler belirlendi (Gülbahar Varol: Ajan 2, Gemini Advanced).
+- [x] Gülbahar Varol için Ajan 2 ve Gemini Advanced aboneliği bildirildi; diğer roller ekip görüşmesine bırakıldı.
