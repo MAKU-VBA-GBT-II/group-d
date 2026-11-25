@@ -149,5 +149,11 @@ def csv_yaz(satirlar: list[dict], dosya_yolu: str = "data/talepler-odemeler.csv"
 # ── Ana Giriş ────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    veriler = veri_uret()
-    csv_yaz(veriler)
+    import sys
+    # Eğer komut satırından poliçe veya il parametresi geçilmişse simülasyon motorunu çağır
+    if len(sys.argv) > 1 and any(arg in sys.argv for arg in ["--iller", "--policeler", "--prim-min", "--prim-max", "--adet"]):
+        from simulasyon import main as simulasyon_main
+        simulasyon_main()
+    else:
+        veriler = veri_uret()
+        csv_yaz(veriler)
