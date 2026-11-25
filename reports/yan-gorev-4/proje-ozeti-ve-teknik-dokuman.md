@@ -12,7 +12,7 @@
 * **Başvuru Numarası:** `AI-TECH-513`
 * **Başvuru Tarihi:** 24.11.2026
 * **Durum:** Açık / Başvuru Tamamlandı
-* **Başvuru Ekran Görüntüsü:** 
+* **Başvuru Ekran Görüntüsü:** Eklendi
 ---
 
 ## 2. Proje Başvuru İçeriği ve Özeti
