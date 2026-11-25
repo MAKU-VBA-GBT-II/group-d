@@ -13,7 +13,6 @@
 * **Başvuru Tarihi:** 24.11.2026
 * **Durum:** Açık / Başvuru Tamamlandı
 * **Başvuru Ekran Görüntüsü:** 
--
 ---
 
 ## 2. Proje Başvuru İçeriği ve Özeti
