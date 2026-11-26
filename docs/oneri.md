@@ -63,4 +63,6 @@ Duyuru 10 kapsamında ekip üyelerinin rol dağılımı ve abonelik durumu:
 - [x] Senaryo ve üç ajanın birer cümlelik tanımı yazıldı.
 - [x] Web kaynakları listelendi; en az biri tarayıcı (headless browser) gerektiriyor; robots.txt ve kullanım şartları kontrol edildi.
 - [x] Sentetik veri simülasyonunun web kaynaklarıyla eşleşme planı hazırlandı.
-- [x] Gülbahar Varol için Ajan 2 ve Gemini Advanced aboneliği bildirildi; diğer roller ekip görüşmesine bırakıldı.
+- [x] Roller ve Abonelikler belirlendi.
+
+
