@@ -50,7 +50,7 @@ Duyuru 10 kapsamında ekip üyelerinin rol dağılımı ve abonelik durumu:
 | Ad Soyad | Görevdeki Rolü | GitHub Kullanıcı Adı | Sahip Olunan AI Aboneliği | Durum |
 |---|---|---|---|---|
 | **Gülbahar VAROL** | Ajan 2 (Veri İşleme ve Eşleme)| [@gulbaharvarol03-lang](https://github.com/gulbaharvarol03-lang) | **Google Gemini (Advanced / Pro)** | **Kesinleşti** |
-| **Eylül ÜSTÜNKAYA** | Ajan 3 (Denetim ve Nihai Rapor)| [@ustunkayaeylul72](https://github.com/ustunkayaeylul72) | *Belirlenecek*  | **Google Gemini (Advanced / Pro)** | **Kesinleşti** |
+| **Eylül ÜSTÜNKAYA** | Ajan 3 (Denetim ve Nihai Rapor)| [@ustunkayaeylul72](https://github.com/ustunkayaeylul72) | **Google Gemini (Advanced / Pro)** | **Kesinleşti** |
 | **Mehmet Emin EMEK** | Ajan 1 (Web Veri Toplayıcı)| [@emin-emek](https://github.com/emin-emek)  | **Google Gemini (Advanced / Pro)** | **Kesinleşti** |
 | **Ayşe AYDIN** | *Belirlenecek* | [@ays4ydn](https://github.com/ays4ydn) | *Belirlenecek* | Ekip içi görüşülüyor |
 | **Ebru GÖNÜL** | Junior Destek ( web kaynakları araştırması ve robots.txt/şartlar konrtolü) | [@ebruug-nl](https://github.com/ebruug-nl)  | **Google Gemini** | **Kesinleşti** |
